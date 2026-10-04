@@ -27,6 +27,8 @@ const app = express();
 // Connect Database & Auto-Seed Demo Records
 connectDB().then(() => {
   autoSeed();
+}).catch(err => {
+  console.warn('[Serverless DB Warn]', err.message);
 });
 
 // Middlewares
