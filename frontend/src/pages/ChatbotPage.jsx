@@ -15,12 +15,24 @@ const ChatbotPage = () => {
   const messagesEndRef = useRef(null);
 
   const samplePrompts = [
+    "HTML & Web Development Roadmap",
     "What should I learn for an AI Engineer career?",
     "Which career is best for me?",
     "How can I improve my resume?",
     "What projects should I build?",
     "How do I prepare for an internship?"
   ];
+
+  const formatMessageText = (text) => {
+    if (!text) return '';
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-bold text-cyan-300">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -93,13 +105,13 @@ const ChatbotPage = () => {
       </div>
 
       {/* Suggested Quick Prompt Pills */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-1 custom-scrollbar">
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
         <span className="text-[11px] font-bold uppercase text-slate-500 shrink-0">Prompts:</span>
         {samplePrompts.map((prompt, idx) => (
           <button
             key={idx}
             onClick={() => handleSendMessage(prompt)}
-            className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 text-slate-300 hover:text-white text-xs font-medium shrink-0 transition-all"
+            className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 text-slate-300 hover:text-white text-xs font-medium shrink-0 transition-all cursor-pointer"
           >
             {prompt}
           </button>
@@ -128,11 +140,11 @@ const ChatbotPage = () => {
               <div
                 className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${
                   isUser
-                    ? 'bg-indigo-600 text-white rounded-tr-none'
+                    ? 'bg-indigo-600 text-white rounded-tr-none font-medium'
                     : 'bg-slate-900/90 border border-slate-800 text-slate-100 rounded-tl-none font-sans whitespace-pre-wrap'
                 }`}
               >
-                {msg.text}
+                {formatMessageText(msg.text)}
               </div>
             </div>
           );

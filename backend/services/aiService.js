@@ -120,22 +120,67 @@ const generateFallbackChatResponse = (query, profile) => {
   const q = query.toLowerCase();
   const userName = profile?.name || 'Student';
 
-  if (q.includes('ai') || q.includes('machine learning') || q.includes('data science')) {
-    return `Hello ${userName}! For a career in **AI/ML & Data Science**, focus on this roadmap:\n\n` +
-      `1. **Core Fundamentals**: Python, Mathematics (Linear Algebra, Calculus), Probability & Statistics.\n` +
-      `2. **Core Libraries**: NumPy, Pandas, Matplotlib, Scikit-Learn.\n` +
-      `3. **Deep Learning Frameworks**: PyTorch or TensorFlow, Convolutional & Recurrent Neural Networks.\n` +
-      `4. **Generative AI & LLMs**: Transformers, Hugging Face, RAG architecture, Prompt Engineering.\n` +
-      `5. **Recommended Projects**: Build a Sentiment Analysis Tool, an Image Classifier, or a Custom Knowledge Base RAG Assistant.`;
+  if (q.includes('html') || q.includes('css') || q.includes('web') || q.includes('frontend') || q.includes('react') || q.includes('javascript') || q.includes('js')) {
+    return `Hello ${userName}! Here is your structured guide for **HTML, CSS & Frontend Web Development**:\n\n` +
+      `1. **HTML5 Essentials**: Semantic tags (<header>, <nav>, <section>, <article>, <footer>), Forms & Validations, Accessibility (ARIA), and SEO Meta Tags.\n` +
+      `2. **CSS3 & Styling**: Flexbox, CSS Grid, Responsive Media Queries, CSS Variables, and Tailwind CSS.\n` +
+      `3. **Modern JavaScript (ES6+)**: DOM Manipulation, Async/Await, Fetch API, Arrow Functions, Array Methods (map, filter, reduce), and Event Delegation.\n` +
+      `4. **Frontend Framework (React.js)**: Component Lifecycle, Hooks (useState, useEffect, useContext), React Router, State Management, and Vite build tool.\n` +
+      `5. **Recommended Projects**: Build a Responsive Portfolio, an Interactive Quiz App, or an E-Commerce Frontend with Shopping Cart state.`;
   }
 
-  if (q.includes('full stack') || q.includes('web development') || q.includes('software engineer')) {
+  if (q.includes('python') || q.includes('ai') || q.includes('machine learning') || q.includes('data science') || q.includes('deep learning')) {
+    return `Hello ${userName}! For a career in **Python, AI/ML & Data Science**, focus on this roadmap:\n\n` +
+      `1. **Core Fundamentals**: Python Programming, Mathematics (Linear Algebra, Calculus), Probability & Statistics.\n` +
+      `2. **Data & Analytics**: NumPy, Pandas, Matplotlib, Seaborn, and SQL Data Querying.\n` +
+      `3. **Machine Learning**: Scikit-Learn (Linear Regression, Decision Trees, Random Forests, K-Means).\n` +
+      `4. **Deep Learning & GenAI**: PyTorch or TensorFlow, Convolutional Neural Networks, Hugging Face Transformers, RAG Architecture, and Prompt Engineering.\n` +
+      `5. **Recommended Projects**: Build a Sentiment Analysis Tool, an Autonomous Image Classifier, or an AI Document QA Engine.`;
+  }
+
+  if (q.includes('node') || q.includes('express') || q.includes('sql') || q.includes('mongodb') || q.includes('backend') || q.includes('database') || q.includes('api')) {
+    return `Hi ${userName}! To master **Backend Development & Databases**:\n\n` +
+      `1. **Node.js & Express.js**: Asynchronous I/O, Event Loop, REST API Design, Express Middleware, Error Handling.\n` +
+      `2. **Database Management**: Relational (PostgreSQL, MySQL) & NoSQL (MongoDB with Mongoose).\n` +
+      `3. **Security & Authentication**: JWT (JSON Web Tokens), Password Hashing (Bcrypt), CORS, Role-Based Access Control.\n` +
+      `4. **API Testing & Tools**: Postman, Insomnia, Swagger/OpenAPI documentation.\n` +
+      `5. **Key Advice**: Focus on building secure microservices with clean error logging and structured database indexing!`;
+  }
+
+  if (q.includes('java') || q.includes('c++') || q.includes('cpp') || q.includes('dsa') || q.includes('algorithm') || q.includes('coding')) {
+    return `Hi ${userName}! To excel in **Data Structures & Algorithms (DSA)**:\n\n` +
+      `1. **Language Mastery**: Object-Oriented Programming (OOP) in Java or C++.\n` +
+      `2. **Core DSA**: Arrays, Linked Lists, Stacks, Queues, Hash Tables, Trees, Graphs, Sorting & Searching.\n` +
+      `3. **Advanced Techniques**: Recursion, Dynamic Programming, Two-Pointers, Sliding Window, Greedy Algorithms.\n` +
+      `4. **Practice Platforms**: Solve 150+ categorized problems on LeetCode, HackerRank, or GeeksforGeeks.\n` +
+      `5. **Interview Goal**: Master Time & Space Complexity analysis (Big-O notation) for tech coding rounds!`;
+  }
+
+  if (q.includes('devops') || q.includes('cloud') || q.includes('aws') || q.includes('docker') || q.includes('kubernetes') || q.includes('linux') || q.includes('git')) {
+    return `Hello ${userName}! For a career in **DevOps & Cloud Engineering**:\n\n` +
+      `1. **Linux & Scripting**: Linux Command Line, Shell/Bash Scripting, File System Administration.\n` +
+      `2. **Version Control**: Git branching strategies, GitHub Actions, Automated CI/CD Pipelines.\n` +
+      `3. **Containerization**: Docker Container Creation, Docker Compose, Kubernetes Cluster Orchestration.\n` +
+      `4. **Cloud Infrastructure**: AWS (EC2, S3, RDS, Lambda) or Azure, Terraform Infrastructure as Code.\n` +
+      `5. **Monitoring**: Prometheus, Grafana, and Log Management.`;
+  }
+
+  if (q.includes('security') || q.includes('cyber') || q.includes('hacking')) {
+    return `Hello ${userName}! For **Cybersecurity & Ethical Hacking**:\n\n` +
+      `1. **Network Security**: TCP/IP protocols, OSI Model, Subnetting, Wireshark packet analysis.\n` +
+      `2. **Linux & Tools**: Kali Linux, Nmap, Metasploit, Burp Suite.\n` +
+      `3. **Web Security**: OWASP Top 10 vulnerabilities (SQLi, XSS, CSRF, Authentication Bypasses).\n` +
+      `4. **Certifications**: CompTIA Security+, Certified Ethical Hacker (CEH).\n` +
+      `5. **Hands-On Practice**: TryHackMe and HackTheBox labs.`;
+  }
+
+  if (q.includes('full stack') || q.includes('software engineer')) {
     return `Hi ${userName}! To become a **Full Stack Software Engineer**:\n\n` +
-      `1. **Frontend**: React.js / Next.js, Modern JavaScript (ES6+), HTML5, CSS3, Tailwind CSS.\n` +
-      `2. **Backend**: Node.js, Express.js, RESTful API design, GraphQL.\n` +
+      `1. **Frontend**: React.js / Next.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS.\n` +
+      `2. **Backend**: Node.js, Express.js, RESTful API design.\n` +
       `3. **Databases**: MongoDB, PostgreSQL, Redis caching.\n` +
       `4. **DevOps Basics**: Docker, Git/GitHub, CI/CD, AWS or Vercel Deployment.\n` +
-      `5. **Key Advice**: Focus on building clean, full-stack applications with user authentication and real-time state management!`;
+      `5. **Key Advice**: Focus on building clean full-stack applications with authentication and real-time state management!`;
   }
 
   if (q.includes('resume') || q.includes('cv') || q.includes('portfolio')) {
@@ -155,10 +200,9 @@ const generateFallbackChatResponse = (query, profile) => {
   }
 
   return `Hello ${userName}! As your Nova AI career guide, I can help you with:\n\n` +
-    `- Personalized career recommendations based on your profile (${profile?.branch || 'Tech'})\n` +
-    `- Custom learning roadmaps for Full Stack, AI/ML, Cloud, DevOps, & Cybersecurity\n` +
+    `- Technical roadmaps for **HTML/CSS/Web Dev**, **AI/ML**, **Full Stack**, **Cloud/DevOps**, **DSA**, & **Cybersecurity**\n` +
     `- Resume optimization, portfolio project ideas, and internship prep\n\n` +
-    `What specific area would you like to explore today?`;
+    `Ask any specific topic (e.g. "HTML roadmap", "AI engineering", "Resume tips", or "DSA guide")!`;
 };
 
 // Main Exported Functions
