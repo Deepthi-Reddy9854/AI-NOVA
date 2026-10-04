@@ -4,6 +4,7 @@ const Progress = require('../models/Progress');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 const sendEmail = require('../utils/sendEmail');
 
 const generateToken = (id, role) => {
@@ -22,6 +23,13 @@ const registerUser = async (req, res, next) => {
 
     if (!fullName || !email || !password) {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
+    }
+
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is connecting. Please check MONGODB_URI password and Network Access (0.0.0.0/0) in MongoDB Atlas.'
+      });
     }
 
     const cleanEmail = email.toLowerCase().trim();
