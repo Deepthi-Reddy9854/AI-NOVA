@@ -39,6 +39,18 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+// Ensure DB Connection for Serverless Execution
+app.use(async (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.warn('[DB Middleware Warn]', err.message);
+    }
+  }
+  next();
+});
+
 // Healthcheck Route
 app.get('/api/health', (req, res) => {
   res.status(200).json({

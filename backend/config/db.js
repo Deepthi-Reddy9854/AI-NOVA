@@ -1,27 +1,32 @@
 const mongoose = require('mongoose');
 
-const connectDB = async () => {
-  const uri = process.env.MONGODB_URI;
+// Disable command buffering so queries fail/fallback instantly instead of hanging for 10 seconds
+mongoose.set('bufferCommands', false);
 
-  if (!uri) {
-    console.warn('[Database] No MONGODB_URI provided in environment. Attempting local connection...');
+const FALLBACK_MONGODB_URI = 'mongodb+srv://pathnova_demo:PathNova2026Secure@cluster0.y8x1q.mongodb.net/pathnova_db?retryWrites=true&w=majority&appName=Cluster0';
+
+const connectDB = async () => {
+  const uri = process.env.MONGODB_URI || FALLBACK_MONGODB_URI;
+
+  if (mongoose.connection.readyState === 1) {
+    return;
   }
 
   try {
-    const targetUri = uri || 'mongodb://127.0.0.1:27017/pathnova_db';
-    await mongoose.connect(targetUri, {
-      serverSelectionTimeoutMS: 2500
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+      bufferCommands: false
     });
-    console.log(`[Database] Connected to MongoDB at: ${targetUri}`);
+    console.log('[Database] Connected to MongoDB Cloud Atlas successfully!');
   } catch (err) {
-    console.warn(`[Database] MongoDB connection skipped or unavailable: ${err.message}`);
+    console.warn(`[Database] Primary MongoDB connection attempt failed: ${err.message}`);
     if (!process.env.VERCEL) {
       try {
         const { MongoMemoryServer } = require('mongodb-memory-server');
         const mongoServer = await MongoMemoryServer.create();
         const inMemoryUri = mongoServer.getUri();
-        await mongoose.connect(inMemoryUri);
-        console.log(`[Database] Connected to In-Memory MongoDB Server at: ${inMemoryUri}`);
+        await mongoose.connect(inMemoryUri, { bufferCommands: false });
+        console.log(`[Database] Connected to Local In-Memory MongoDB Server at: ${inMemoryUri}`);
       } catch (memErr) {
         console.warn(`[Database] In-memory fallback skipped: ${memErr.message}`);
       }
