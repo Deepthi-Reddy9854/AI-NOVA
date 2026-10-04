@@ -109,7 +109,7 @@ const StudentProfile = () => {
 
         <div className="text-right">
           <span className="text-xs font-semibold uppercase text-slate-400">Profile Meter</span>
-          <p className="text-2xl font-extrabold text-emerald-400">{profile.profileCompletion || 75}%</p>
+          <p className="text-2xl font-extrabold text-emerald-400">{profile.profileCompletion ?? 0}%</p>
         </div>
       </div>
 

@@ -30,11 +30,11 @@ const getProfile = async (req, res, next) => {
         college: user ? user.college : '',
         branch: user ? user.course : '',
         graduationYear: user ? user.graduationYear : 2026,
-        technicalSkills: ['Python', 'HTML', 'CSS', 'JavaScript', 'SQL'],
-        softSkills: ['Problem Solving', 'Communication'],
-        interests: ['Artificial Intelligence', 'Web Development'],
-        preferredCareer: 'Full Stack Developer',
-        profileCompletion: 70
+        technicalSkills: [],
+        softSkills: [],
+        interests: [],
+        preferredCareer: '',
+        profileCompletion: 0
       });
     }
 

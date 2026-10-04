@@ -59,11 +59,11 @@ const registerUser = async (req, res, next) => {
       degree: education || '',
       branch: course || '',
       graduationYear: graduationYear || 2026,
-      technicalSkills: ['Python', 'HTML', 'CSS', 'JavaScript', 'SQL'],
-      softSkills: ['Communication', 'Teamwork', 'Problem Solving'],
-      interests: ['Web Development', 'Artificial Intelligence'],
-      preferredWorkArea: course || 'Software Engineering',
-      profileCompletion: 60
+      technicalSkills: [],
+      softSkills: [],
+      interests: [],
+      preferredWorkArea: course || '',
+      profileCompletion: 0
     });
 
     // Create Initial Progress (start at 0%)

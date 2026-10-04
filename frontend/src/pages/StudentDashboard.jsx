@@ -138,7 +138,9 @@ const StudentDashboard = () => {
           <div>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Career Readiness</p>
             <h3 className="text-2xl font-extrabold text-emerald-400 mt-1">{overallProg}%</h3>
-            <p className="text-xs text-slate-400 mt-1">Phase 3 of 7 in progress</p>
+            <p className="text-xs text-slate-400 mt-1">
+              {overallProg === 0 ? 'Phase 1 of 7 starting' : `Phase ${Math.min(Math.floor((overallProg / 100) * 7) + 1, 7)} of 7 in progress`}
+            </p>
           </div>
           <div className="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
             <TrendingUp className="w-6 h-6" />
@@ -280,12 +282,12 @@ const StudentDashboard = () => {
                   className="text-indigo-500"
                   fill="transparent"
                   strokeDasharray="364"
-                  strokeDashoffset={364 - (364 * 42) / 100}
+                  strokeDashoffset={364 - (364 * overallProg) / 100}
                   strokeLinecap="round"
                 />
               </svg>
               <div className="absolute flex flex-col items-center">
-                <span className="text-2xl font-extrabold text-white">42%</span>
+                <span className="text-2xl font-extrabold text-white">{overallProg}%</span>
                 <span className="text-[10px] text-slate-400 uppercase font-semibold">Completed</span>
               </div>
             </div>
