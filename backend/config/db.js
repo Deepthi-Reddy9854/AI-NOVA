@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const FALLBACK_MONGODB_URI = 'mongodb+srv://deepthibolla07_db_user:PathNova2026Secure@cluster0.o3dlk7r.mongodb.net/pathnova_db?retryWrites=true&w=majority&appName=Cluster0';
+const FALLBACK_MONGODB_URI = 'mongodb+srv://deepthibolla07_db_user:Bolla12345@cluster0.o3dlk7r.mongodb.net/pathnova_db?retryWrites=true&w=majority&appName=Cluster0';
 
 const connectDB = async () => {
   const uri = process.env.MONGODB_URI || FALLBACK_MONGODB_URI;
