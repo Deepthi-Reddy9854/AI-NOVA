@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logoImg from '../assets/logo.jpg';
 import {
   Compass,
   Sparkles,
@@ -33,7 +34,7 @@ const LandingPage = () => {
 
         <div className="flex justify-center mb-6">
           <img
-            src="/logo.jpg"
+            src={logoImg}
             alt="Nova AI Brand Logo"
             className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl object-contain shadow-glow border border-indigo-500/30 p-1.5 bg-slate-900/80 hover:scale-105 transition-transform duration-300"
           />

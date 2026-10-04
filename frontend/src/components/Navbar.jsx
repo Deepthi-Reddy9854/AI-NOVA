@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logoImg from '../assets/logo.jpg';
 import { 
   Compass, 
   User, 
@@ -42,7 +43,7 @@ const Navbar = ({ toggleSidebar }) => {
             )}
             <Link to="/" className="flex items-center space-x-3 group">
               <img
-                src="/logo.jpg"
+                src={logoImg}
                 alt="Nova AI Logo"
                 className="w-10 h-10 rounded-xl object-contain bg-white/10 p-0.5 shadow-glow group-hover:scale-105 transition-transform duration-200"
               />

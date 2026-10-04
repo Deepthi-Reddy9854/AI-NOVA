@@ -1,12 +1,13 @@
 import React from 'react';
 import { Compass, Github, Heart } from 'lucide-react';
+import logoImg from '../assets/logo.jpg';
 
 const Footer = () => {
   return (
     <footer className="bg-[#090d16] border-t border-slate-800/60 py-8 px-4 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
         <div className="flex items-center space-x-2">
-          <img src="/logo.jpg" alt="Nova AI Logo" className="w-6 h-6 rounded-lg object-contain bg-white/10 p-0.5" />
+          <img src={logoImg} alt="Nova AI Logo" className="w-6 h-6 rounded-lg object-contain bg-white/10 p-0.5" />
           <span className="font-semibold text-slate-200">Nova AI</span>
           <span>&copy; {new Date().getFullYear()} All Rights Reserved.</span>
         </div>

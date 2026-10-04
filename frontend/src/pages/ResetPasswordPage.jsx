@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { authAPI } from '../services/api';
 import NotificationToast from '../components/NotificationToast';
+import logoImg from '../assets/logo.jpg';
 import { Lock, KeyRound, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 
 const ResetPasswordPage = () => {
@@ -50,7 +51,7 @@ const ResetPasswordPage = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center space-x-3 mb-3">
-            <img src="/logo.jpg" alt="Nova AI Logo" className="w-14 h-14 rounded-2xl object-contain bg-white/10 p-1 shadow-glow" />
+            <img src={logoImg} alt="Nova AI Logo" className="w-14 h-14 rounded-2xl object-contain bg-white/10 p-1 shadow-glow" />
             <span className="text-3xl font-extrabold text-white">
               Nova<span className="text-cyan-400">.AI</span>
             </span>
