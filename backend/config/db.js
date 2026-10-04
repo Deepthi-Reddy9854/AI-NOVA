@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Disable command buffering so queries fail/fallback instantly instead of hanging for 10 seconds
 mongoose.set('bufferCommands', false);
 
-const FALLBACK_MONGODB_URI = 'mongodb+srv://pathnova_demo:PathNova2026Secure@cluster0.y8x1q.mongodb.net/pathnova_db?retryWrites=true&w=majority&appName=Cluster0';
+const FALLBACK_MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://deepthibolla07_db_user:PathNova2026Secure@cluster0.o3dlk7r.mongodb.net/pathnova_db?retryWrites=true&w=majority&appName=Cluster0';
 
 const connectDB = async () => {
   const uri = process.env.MONGODB_URI || FALLBACK_MONGODB_URI;
