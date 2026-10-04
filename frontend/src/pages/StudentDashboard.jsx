@@ -62,11 +62,11 @@ const StudentDashboard = () => {
     );
   }
 
-  const profileScore = profile?.profileCompletion || 75;
+  const profileScore = profile?.profileCompletion ?? 0;
   const topCareer = recommendations?.topCareer || profile?.preferredCareer || 'AI/ML Engineer';
   const recList = recommendations?.recommendedCareers || [];
-  const techSkills = profile?.technicalSkills || ['Python', 'HTML', 'CSS', 'JavaScript', 'SQL'];
-  const overallProg = progress?.overallPercentage || 45;
+  const techSkills = profile?.technicalSkills || [];
+  const overallProg = progress?.overallPercentage ?? 0;
 
   return (
     <div className="space-y-8">

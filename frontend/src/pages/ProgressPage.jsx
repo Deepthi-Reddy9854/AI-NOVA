@@ -87,11 +87,11 @@ const ProgressPage = () => {
     );
   }
 
-  const overallPercentage = progress?.overallPercentage || 58;
-  const completedSkills = progress?.completedSkills || ['HTML', 'CSS', 'JavaScript', 'Python', 'SQL'];
-  const completedTasks = progress?.completedRoadmapTasks || ['Python Programming & Data Structures', 'Git & GitHub Version Control'];
-  const completedProjects = progress?.completedProjects || ['Personal Developer Portfolio', 'Weather Forecast API App'];
-  const certifications = progress?.certifications || [{ title: 'Python for Data Science', issuer: 'Coursera', date: '2024' }];
+  const overallPercentage = progress?.overallPercentage ?? 0;
+  const completedSkills = progress?.completedSkills || [];
+  const completedTasks = progress?.completedRoadmapTasks || [];
+  const completedProjects = progress?.completedProjects || [];
+  const certifications = progress?.certifications || [];
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto">

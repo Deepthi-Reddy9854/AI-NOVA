@@ -15,14 +15,14 @@ const generateDefaultPhases = (careerTitle) => {
           description: 'Master variables, data structures, OOP principles, syntax and logic flow.',
           difficulty: 'Beginner',
           estimatedTime: '2 Weeks',
-          status: 'completed'
+          status: 'pending'
         },
         {
           skill: 'Git & GitHub Version Control',
           description: 'Learn repository management, branching, pull requests, and collaborative code reviews.',
           difficulty: 'Beginner',
           estimatedTime: '1 Week',
-          status: 'completed'
+          status: 'pending'
         }
       ]
     },
@@ -35,7 +35,7 @@ const generateDefaultPhases = (careerTitle) => {
           description: 'Build responsive web apps using state management, hooks, and Virtual DOM concepts.',
           difficulty: 'Intermediate',
           estimatedTime: '3 Weeks',
-          status: 'in-progress'
+          status: 'pending'
         },
         {
           skill: isAI ? 'NumPy, Pandas & Exploratory Data Analysis' : 'Node.js & Express.js RESTful API Development',

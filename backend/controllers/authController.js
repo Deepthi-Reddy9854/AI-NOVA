@@ -66,16 +66,14 @@ const registerUser = async (req, res, next) => {
       profileCompletion: 60
     });
 
-    // Create Initial Progress
+    // Create Initial Progress (start at 0%)
     await Progress.create({
       user: user._id,
-      completedSkills: ['HTML', 'CSS', 'JavaScript'],
-      completedRoadmapTasks: ['Set up IDE & Git'],
-      completedProjects: ['Personal Portfolio Website'],
-      certifications: [
-        { title: 'Web Development Foundations', issuer: 'Coursera', date: '2024' }
-      ],
-      overallPercentage: 35
+      completedSkills: [],
+      completedRoadmapTasks: [],
+      completedProjects: [],
+      certifications: [],
+      overallPercentage: 0
     });
 
     const token = generateToken(user._id, user.role);

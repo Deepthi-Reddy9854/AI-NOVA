@@ -9,16 +9,13 @@ const getProgress = async (req, res, next) => {
     let progress = await Progress.findOne({ user: req.user.id });
 
     if (!progress) {
-      const profile = await Profile.findOne({ user: req.user.id });
       progress = await Progress.create({
         user: req.user.id,
-        completedSkills: profile ? (profile.technicalSkills || []).slice(0, 3) : ['HTML', 'CSS', 'JavaScript'],
-        completedRoadmapTasks: ['Git & GitHub Version Control', 'Frontend UI Architecture'],
-        completedProjects: ['Portfolio Website', 'Task Management App'],
-        certifications: [
-          { title: 'Full Stack Development Certificate', issuer: 'Coursera', date: '2024' }
-        ],
-        overallPercentage: 42
+        completedSkills: [],
+        completedRoadmapTasks: [],
+        completedProjects: [],
+        certifications: [],
+        overallPercentage: 0
       });
     }
 
@@ -35,7 +32,14 @@ const updateProgress = async (req, res, next) => {
     let progress = await Progress.findOne({ user: req.user.id });
 
     if (!progress) {
-      progress = new Progress({ user: req.user.id });
+      progress = new Progress({
+        user: req.user.id,
+        completedSkills: [],
+        completedRoadmapTasks: [],
+        completedProjects: [],
+        certifications: [],
+        overallPercentage: 0
+      });
     }
 
     const { newSkill, newProject, newCertification, overallPercentage } = req.body;
@@ -53,13 +57,14 @@ const updateProgress = async (req, res, next) => {
     }
 
     if (overallPercentage !== undefined) {
-      progress.overallPercentage = overallPercentage;
+      progress.overallPercentage = Math.min(Math.max(overallPercentage, 0), 100);
     } else {
-      // Calculate dynamic progress score
-      const skillsScore = progress.completedSkills.length * 8;
-      const projectsScore = progress.completedProjects.length * 15;
-      const certsScore = progress.certifications.length * 10;
-      progress.overallPercentage = Math.min(skillsScore + projectsScore + certsScore + 20, 100);
+      // Dynamic score starting at 0%: 5% per task, 4% per skill, 10% per project, 5% per cert
+      const tasksScore = progress.completedRoadmapTasks.length * 5;
+      const skillsScore = progress.completedSkills.length * 4;
+      const projectsScore = progress.completedProjects.length * 10;
+      const certsScore = progress.certifications.length * 5;
+      progress.overallPercentage = Math.min(tasksScore + skillsScore + projectsScore + certsScore, 100);
     }
 
     progress.updatedAt = Date.now();
