@@ -25,17 +25,16 @@ const registerUser = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
 
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({
-        success: false,
-        message: 'Database is connecting. Please check MONGODB_URI password and Network Access (0.0.0.0/0) in MongoDB Atlas.'
-      });
-    }
+    const connectDB = require('../config/db');
+    await connectDB();
 
     const cleanEmail = email.toLowerCase().trim();
-    const existingUser = await User.findOne({ email: cleanEmail });
-    if (existingUser) {
-      return res.status(400).json({ success: false, message: 'User already exists with this email. Please try to login.' });
+
+    if (mongoose.connection.readyState === 1) {
+      const existingUser = await User.findOne({ email: cleanEmail });
+      if (existingUser) {
+        return res.status(400).json({ success: false, message: 'User already exists with this email. Please try to login.' });
+      }
     }
 
     const salt = await bcrypt.genSalt(10);
